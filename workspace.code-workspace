@@ -1,0 +1,60 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.rulers": [120],
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": false,
+    "files.insertFinalNewline": true,
+    "files.eol": "\r\n",
+    "prettier.stylelintIntegration": true,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "stylelint.enable": true,
+    "html.format.enable": true,
+    "html.format.wrapAttributes": "auto",
+    "html.format.endWithNewline": false,
+    "html.format.wrapLineLength": 80,
+    "editor.formatOnSave": false,
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "[css]": {
+      "editor.formatOnSave": true
+    },
+    "[json]": {
+      "editor.formatOnSave": true
+    },
+    "[jsonc]": {
+      "editor.formatOnSave": true
+    },
+    "[html]": {
+      "editor.formatOnSave": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "/dist": true,
+      "/docs": true,
+      "/.tmp": true
+    },
+    "launch": {
+      "version": "0.2.0",
+      "configurations": [
+        {
+          "name": "Attach DEBUG",
+          "type": "chrome",
+          "request": "attach",
+          "port": 3000,
+          "webRoot": "${workspaceRoot}"
+        }
+      ]
+    }
+  }
+}
