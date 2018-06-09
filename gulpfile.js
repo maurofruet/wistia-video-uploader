@@ -10,15 +10,15 @@ var runSequence = require("run-sequence");
 gulp.task("browserSync", function() {
   browserSync.init({
     server: {
-      baseDir: "src"
+      baseDir: "."
     }
   });
 });
 
 gulp.task("start", ["browserSync"], function() {
-  gulp.watch("app/**/*.html", browserSync.reload);
-  gulp.watch("app/**/*.css", browserSync.reload);
-  gulp.watch("app/**/*.js", browserSync.reload);
+  gulp.watch("**/*.html", browserSync.reload);
+  gulp.watch("src/**/*.css", browserSync.reload);
+  gulp.watch("src/**/*.js", browserSync.reload);
 });
 
 gulp.task("useref", function() {

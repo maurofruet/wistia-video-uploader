@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="app" ng-strict-di>
+
+<head>
+  <meta charset="utf-8">
+  <title>Wistia Video Uploader</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--build:css css/styles.min.css-->
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/blueimp-file-upload/css/jquery.fileupload.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css">
+  <link rel="stylesheet" type="text/css" href="src/style.css">
+  <!--endbuild-->
+</head>
+
+<body>
+  <wistia-video-uploader></wistia-video-uploader>
+
+  <!--build:js js/vendor.min.js -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/jquery-ui/ui/widget.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+  <script src="node_modules/blueimp-file-upload/js/jquery.fileupload-video.js"></script>
+  <script src="node_modules/blueimp-file-upload/js/jquery.fileupload-angular.js"></script>
+  <script src="node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+  <!-- endbuild -->
+
+  <!--build:js js/app.min.js -->
+  <script src="src/app/app.module.js"></script>
+  <script src="src/app/wistia-video-uploader/wistia-video-uploader.component.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>
