@@ -23,15 +23,19 @@ gulp.task("start", ["browserSync"], function() {
 
 gulp.task("useref", function() {
   return gulp
-    .src("src/index.html")
+    .src("index.html")
     .pipe(useref())
     .pipe(gulpIf("*.js", uglify()))
     .pipe(gulpIf("*.css", cssnano()))
     .pipe(gulp.dest("dist"));
 });
 
+gulp.task("copy-html", function() {
+  gulp.src("src/**/*.html").pipe(gulp.dest("dist/src"));
+});
+
 gulp.task("build", function(callback) {
-  runSequence("clean:dist", ["useref"], callback);
+  runSequence("clean:dist", ["useref", "copy-html"], callback);
 });
 
 gulp.task("clean:dist", function() {
