@@ -44,7 +44,7 @@
     }
 
     function getVideoClass() {
-      return "video wistia_embed wistia_async_" + videoId;
+      return WistiaVideoUploaderCostants.VIDEO_PREFIX + videoId;
     }
 
     function onAdded(e, data) {
@@ -66,7 +66,7 @@
     function progress(e, data) {
       $scope.$applyAsync(function() {
         $ctrl.progress = parseInt((data.loaded / data.total) * 100, 10);
-        $(".progress-bar").css("width", $ctrl.progress + "%");
+        $element.find(".progress-bar").css("width", $ctrl.progress + "%");
       });
     }
 
@@ -79,7 +79,7 @@
       var formData = new FormData();
       formData.append("file", file);
       formData.append("api_password", WistiaVideoUploaderCostants.API_PASSWORD);
-      $(this).fileupload("option", "data", formData);
+      $element.find(this).fileupload("option", "data", formData);
     }
   }
 })();
