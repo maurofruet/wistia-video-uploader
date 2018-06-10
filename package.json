@@ -5,13 +5,15 @@
   "scripts": {
     "gulp": "gulp",
     "start": "npm run gulp start",
-    "build": "npm run gulp build"
+    "build": "npm run gulp build",
+    "test": "karma start karma.config.js"
   },
   "author": "Mauro Fruet",
   "license": "ISC",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.18",
     "angular": "^1.7.1",
+    "angular-mocks": "^1.7.1",
     "blueimp-canvas-to-blob": "^3.14.0",
     "blueimp-file-upload": "^9.21.0",
     "blueimp-gallery": "^2.33.0",
@@ -28,6 +30,10 @@
     "gulp": "^3.9.1",
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.5",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2",
     "run-sequence": "^2.2.1"
   },
   "browserify": {
