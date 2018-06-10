@@ -15,7 +15,6 @@
     $ctrl.isVideoVisible = isVideoVisible;
     $ctrl.isUploading = isUploading;
     $ctrl.getVideoClass = getVideoClass;
-    $ctrl.progess = 0;
     $ctrl.hasFailed = false;
 
     var uploading = false;
