@@ -12,9 +12,13 @@
     var $ctrl = this;
 
     $ctrl.$onInit = onInit;
-    $ctrl.isUploaded = isUploaded;
+    $ctrl.isVideoVisible = isVideoVisible;
+    $ctrl.isUploading = isUploading;
     $ctrl.getVideoClass = getVideoClass;
+    $ctrl.progess = 0;
+    $ctrl.hasFailed = false;
 
+    var uploading = false;
     var uploaded = false;
     var videoId = undefined;
 
@@ -32,8 +36,12 @@
         .on("fileuploadadd", onFileAdded);
     }
 
-    function isUploaded() {
-      return uploaded;
+    function isVideoVisible() {
+      return uploaded && !uploading;
+    }
+
+    function isUploading() {
+      return uploading;
     }
 
     function getVideoClass() {
@@ -42,26 +50,37 @@
 
     function onAdded(e, data) {
       $scope.$applyAsync(function() {
+        uploading = false;
         uploaded = true;
         videoId = data.result["hashed_id"];
       });
     }
 
     function onFail(e, data) {
-      $element.find(".error").html(data);
+      $scope.$applyAsync(function() {
+        $ctrl.hasFailed = true;
+        uploading = false;
+        $ctrl.errorMessage = data.errorThrown;
+      });
     }
 
     function progress(e, data) {
-      var progress = parseInt((data.loaded / data.total) * 100, 10);
-      $(".progress .progress-bar").css("width", progress + "%");
+      $scope.$applyAsync(function() {
+        $ctrl.progress = parseInt((data.loaded / data.total) * 100, 10);
+        $(".progress-bar").css("width", $ctrl.progress + "%");
+      });
     }
 
-    function onFileAdded(e, data) {
-      var file = data.files[0];
-      var data = new FormData();
-      data.append("file", file);
-      data.append("api_password", WistiaVideoUploaderCostants.API_PASSWORD);
-      $(this).fileupload("option", "data", data);
+    function onFileAdded(e, formData) {
+      $scope.$applyAsync(function() {
+        uploading = true;
+        $ctrl.hasFailed = false;
+      });
+      var file = formData.files[0];
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append("api_password", WistiaVideoUploaderCostants.API_PASSWORD);
+      $(this).fileupload("option", "data", formData);
     }
   }
 })();

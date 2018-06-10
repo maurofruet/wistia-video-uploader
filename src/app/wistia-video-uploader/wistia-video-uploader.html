@@ -1,16 +1,35 @@
 <h1 class="text-center">Wistia Video Uploader</h1>
 
-<form method="POST" enctype="multipart/form-data" id="fileUploadForm">
-  <input type="file" name="files[]" />
-</form>
+<div class="container">
+  <div class="row">
+    <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+      <div class="col-sm-12 col-md-10 col-offset-md-1">
+        <span class="btn btn-success fileinput-button text-center">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>Select video...</span>
+          <input type="file" name="files[]" multiple>
+        </span>
+      </div>
+    </form>
+  </div>
 
-<div class="progress">
-  <div class="progress-bar progress-bar-success"></div>
+  <br>
+
+  <div ng-if="$ctrl.isUploading()">
+    <p>Uploading the video...</p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar">{{$ctrl.progress}} %</div>
+    </div>
+  </div>
+
+  <div class="row" ng-if="$ctrl.isVideoVisible()">
+    <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+    <div ng-class="$ctrl.getVideoClass()">&nbsp;</div>
+  </div>
+
+  <div class="row" ng-if="$ctrl.hasFailed">
+    <div class="alert alert-danger">
+      <strong>Error!</strong> {{$ctrl.errorMessage}}
+    </div>
+  </div>
 </div>
-
-<div class="container" ng-if="$ctrl.isUploaded()">
-  <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
-  <div ng-class="$ctrl.getVideoClass()">&nbsp;</div>
-</div>
-
-<p class="error"></p>
